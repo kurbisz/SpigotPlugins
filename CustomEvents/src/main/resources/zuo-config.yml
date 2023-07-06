@@ -1,0 +1,37 @@
+events:
+  event1:
+    # Possible options: PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+    bossBarColor: BLUE
+    # Possible options: SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+    bossBarStyle: SOLID
+    region: zuo_event_1
+    # range of Y when mobs can spawn, used mainly for optimization - lower range means better performance
+    minY: 60
+    maxY: 120
+    waves:
+      0:
+        mob1:
+          name: mob1
+          minAmount: 3
+          maxAmount: 5
+          minLvl: 20
+          maxLvl: 30
+        mob2:
+          name: mob2
+          minAmount: 4
+          maxAmount: 7
+          minLvl: 15
+          maxLvl: 25
+      1:
+        mob1:
+          name: mob1
+          minAmount: 6
+          maxAmount: 11
+          minLvl: 25
+          maxLvl: 35
+        mob2:
+          name: mob2
+          minAmount: 10
+          maxAmount: 15
+          minLvl: 20
+          maxLvl: 30

@@ -1,0 +1,58 @@
+messages:
+  addEventTime: "Dodano %time% minut do eventu %event%!"
+  addEventTimePlayer: "Gracz %player% dodal %time% minut do eventu %event%!"
+  setEventTime: "Dodano czas eventu %event% na %time% minut!"
+  setEventTimePlayer: "Gracz %player% ustawil czas eventu %event% na %time% minut!"
+  endEvent: "Event %event% zakonczyl sie!"
+  eventCommandAmount: "Gracz %player% wlaczyl %am%min eventow!"
+  ox:
+    bossBar:
+      question: "&b&l%question%"
+      waiting: "OX rozpocznie sie za %time%s! Aby dolaczyc uzyj /ox dolacz"
+      waitingForQuestion: "Pytanie za moment sie pojawi..."
+    announcement: "[OX] Event OX rozpocznie sie za %time%s! Aby dolaczyc uzyj komendy /ox dolacz"
+    # there can be any time with startingTIME, for example starting15 if you want this msg 15secs before start
+    starting5: "[OX] Event OX rozpoczyna sie za 5 sekund!"
+    starting3: "[OX] Event OX rozpoczyna sie za 3 sekundy!"
+    starting2: "[OX] Event OX rozpoczyna sie za 2 sekundy!"
+    starting1: "[OX] Event OX rozpoczyna sie za 1 sekunde!"
+    started: "[OX] Event OX rozpoczal sie! Chat zostal wylaczony!"
+    cannotJoin: "[OX] Nie mozesz teraz dolaczyc do eventu OX!"
+    alreadyJoined: "[OX] Dolaczyles juz do eventu OX!"
+    notInGame: "[OX] Nie bierzesz udzialu w evencie OX!"
+    left: "[OX] Opusciles event OX!"
+    joined: "[OX] Dolaczyles do eventu OX!"
+    question: "[OX] %question%"
+    yesAnswer: "[OX] Prawidlowa odpowiedz: &a&lTAK"
+    noAnswer: "[OX] Prawidlowa odpowiedz: &c&lNIE"
+    lost: "[OX] Odpadles z eventu OX!"
+    nobodyWon: "[OX] Wszyscy gracze odpadli z eventu OX!"
+    playerWon: "[OX] Gracz %player% wygral w evencie OX!"
+    cannotChat: "[OX] Aktualnie trwa event OX i chat jest wylaczony!"
+    canceled: "[OX] Event OX zostal anulowany!"
+  zuo:
+    bossBar:
+      waiting: "ZUO rozpocznie sie za %time%s! Aby dolaczyc uzyj /zuo dolacz"
+      wave: "Event ZUO - fala %wave% (%left%/%total% mobow)"
+    announcement: "[ZUO] Event ZUO rozpocznie sie za %time%s! Aby dolaczyc uzyj komendy /zuo dolacz"
+    # there can be any time with startingTIME, for example starting15 if you want this msg 15secs before start
+    starting5: "[ZUO] Event ZUO rozpoczyna sie za 5 sekund!"
+    starting3: "[ZUO] Event ZUO rozpoczyna sie za 3 sekundy!"
+    starting2: "[ZUO] Event ZUO rozpoczyna sie za 2 sekundy!"
+    starting1: "[ZUO] Event ZUO rozpoczyna sie za 1 sekunde!"
+    started: "[ZUO] Event ZUO rozpoczal sie!"
+    cannotJoin: "[ZUO] Nie mozesz teraz dolaczyc do eventu ZUO!"
+    joined: "[ZUO] Zostales przeteleportowany do eventu ZUO!"
+    left: "[ZUO] Opusciles event ZUO!"
+    notInGame: "[ZUO] Nie bierzesz udzialu w evencie ZUO!"
+    canceled: "[ZUO] Event ZUO zostal anulowany!"
+    ended: "[ZUO] Event ZUO zakonczyl sie!"
+cmdHelps:
+  ox:
+    - '&7[&6&lOX&7] Dostepne komendy:'
+    - ' &6/ox dolacz &7- dolacza do eventu OX'
+    - ' &6/ox opusc &7- opusc event OX'
+  zuo:
+    - '&7[&6&ZUO&7] Dostepne komendy:'
+    - ' &6/zuo dolacz &7- dolacza do eventu ZUO'
+    - ' &6/zuo opusc &7- opusc event ZUO'

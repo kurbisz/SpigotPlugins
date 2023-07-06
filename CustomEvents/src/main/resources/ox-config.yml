@@ -1,0 +1,20 @@
+# Possible options: PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+bossBarColor: BLUE
+# Possible options: SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+bossBarStyle: SOLID
+# Time for 1 question in ticks (second / 20)
+questionTime: 250
+correctRegion: ox_yes
+wrongRegion: ox_no
+rewards:
+  1:
+    - 'give %player% diamond 32'
+  2:
+    - 'give %player% gold 64'
+questions:
+  1:
+    question: 'Czy do pelnej zbroi potrzeba 24 diamentow?'
+    answer: true
+  2:
+    question: 'Czy do utworzenia 64 skrzynek potrzeba 16 drewna?'
+    answer: false

@@ -1,0 +1,9 @@
+EventB:
+  name: "&6Event B"
+  mobNames:
+    - 'mob1'
+    - 'mob2'
+    - 'mob3'
+  spawnChance: 0.5
+  spawnCmds:
+    - 'mm mobs spawn %type%:%lvl% 1 %world%,%x%,%y%,%z%'

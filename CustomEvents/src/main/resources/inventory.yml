@@ -1,0 +1,23 @@
+title: '&6&lTopka odpalonych eventow'
+items:
+  head:
+    type: PLAYER_HEAD
+    name: '&6&l%nr%. %player%: %am%'
+  info:
+    type: PLAYER_HEAD
+    head: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2Y2MDRjZGQ3OTZlYWE5MzRhZjE2MjM2YjQ3N2RmNmNkMzNlYjEwN2EzZTg4MTMzYmM0YWM2YjNiN2NjNTVkOCJ9fX0=
+    name: '&6&lInformacje'
+    lore:
+      - '&7Odswiezanie topki odbywa sie co minute'
+      - '&7Aby sprawdzic dane gracza uzyj &6/szkatytop <NICK>'
+  prev:
+    type: PLAYER_HEAD
+    head: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2EyYzEyY2IyMjkxODM4NGUwYTgxYzgyYTFlZDk5YWViZGNlOTRiMmVjMjc1NDgwMDk3MjMxOWI1NzkwMGFmYiJ9fX0=
+    name: '&6&lPoprzednia strona'
+  next:
+    type: PLAYER_HEAD
+    head: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjkxYWM0MzJhYTQwZDdlN2E2ODdhYTg1MDQxZGU2MzY3MTJkNGYwMjI2MzJkZDUzNTZjODgwNTIxYWYyNzIzYSJ9fX0==
+    name: '&6&lNastepna strona'
+  empty:
+    type: GRAY_STAINED_GLASS_PANE
+    name: ' '

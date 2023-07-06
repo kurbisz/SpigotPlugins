@@ -1,0 +1,12 @@
+debug: false
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  database: CustomEvents
+  username: root
+  password:
+placeholder:
+  general: '%event% - %time%'
+  defaultGeneral: 'Brak eventu'
+  time: '%h%h %m%min'
+  zeroTime: '&cOFF'

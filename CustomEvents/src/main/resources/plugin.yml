@@ -1,0 +1,17 @@
+name: CustomEvents
+version: '${project.version}'
+main: com.lessnop.customevents.CustomEvents
+api-version: 1.18
+depend:  [MythicMobs, MMOItems, MMOCore, RPGInventory, MythicLib, PlaceholderAPI, WorldGuard]
+commands:
+  customeventsadmin:
+    aliases: [cea, ea, customeventadmin, szkatyadmin]
+    permission: customevents.admin
+  customeventstop:
+    aliases: [cetop, szkatytop]
+  oxadmin:
+    permission: ox.admin
+  ox:
+  zuoadmin:
+    permission: zuo.admin
+  zuo:
