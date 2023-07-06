@@ -72,6 +72,7 @@ public class EventManager {
 			for (Player pl : Bukkit.getOnlinePlayers()) {
 				pl.sendMessage(addTimeMsg);
 			}
+			databaseManager.saveMessage(addTimeMsg);
 			databaseManager.addPlayerTimeToTop(player.getUniqueId(), time);
 		}
 		else {
@@ -81,6 +82,7 @@ public class EventManager {
 			for (Player pl : Bukkit.getOnlinePlayers()) {
 				pl.sendMessage(addTimeMsg);
 			}
+			databaseManager.saveMessage(addTimeMsg);
 		}
 	}
 
@@ -93,13 +95,14 @@ public class EventManager {
 		MessageManager messageManager = CustomEvents.getInstance().getMessageManager();
 		EventType eventType = eventTypeEnum.getEventManager().getEventTypeById(eventId);
 		if (player != null) {
-			String addTimeMsg = StringUtils.replaceVars(messageManager.getMsg("setEventTimePlayer"),
+			String setTimeMsg = StringUtils.replaceVars(messageManager.getMsg("setEventTimePlayer"),
 					"%time%", time + "",
 					"%event%", eventType.getEventName(),
 					"%player%", player.getName());
 			for (Player pl : Bukkit.getOnlinePlayers()) {
-				pl.sendMessage(addTimeMsg);
+				pl.sendMessage(setTimeMsg);
 			}
+			databaseManager.saveMessage(setTimeMsg);
 			databaseManager.addPlayerTimeToTop(player.getUniqueId(), time);
 		}
 		else {
@@ -109,6 +112,7 @@ public class EventManager {
 			for (Player pl : Bukkit.getOnlinePlayers()) {
 				pl.sendMessage(setTimeMsg);
 			}
+			databaseManager.saveMessage(setTimeMsg);
 		}
 	}
 
@@ -143,6 +147,16 @@ public class EventManager {
 				"%event%", eventType.getEventName());
 		for (Player pl : Bukkit.getOnlinePlayers()) {
 			pl.sendMessage(endMessage);
+		}
+
+		databaseManager.saveMessage(endMessage);
+	}
+
+	public void printEventsMessages(List<String> eventsMessages) {
+		for (String str : eventsMessages) {
+			for (Player p : Bukkit.getOnlinePlayers()) {
+				p.sendMessage(str);
+			}
 		}
 	}
 }

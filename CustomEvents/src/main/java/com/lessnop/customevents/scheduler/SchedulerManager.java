@@ -24,4 +24,7 @@ public class SchedulerManager {
 
 	}
 
+	public static void setPlaceholderRefreshTime(int placeholderRefreshTime) {
+		placeholderPeriodInSec = placeholderRefreshTime;
+	}
 }

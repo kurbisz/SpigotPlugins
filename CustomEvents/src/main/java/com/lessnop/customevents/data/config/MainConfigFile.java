@@ -5,6 +5,8 @@ import com.lessnop.customevents.database.DatabaseManager;
 import com.lessnop.customevents.placeholder.PlaceholderManager;
 import com.lessnop.customevents.utils.StringUtils;
 
+import java.util.List;
+
 public class MainConfigFile extends SimpleYamlFile {
 
 
@@ -16,6 +18,13 @@ public class MainConfigFile extends SimpleYamlFile {
 	public void load() {
 		boolean isDebugActive = config.getBoolean("debug");
 		CustomEvents.setDebugMode(isDebugActive);
+
+		String actualServer = config.getString("actualServer");
+		CustomEvents.setActualServer(actualServer);
+		boolean isMainServer = config.getBoolean("mainServer");
+		CustomEvents.setIsMainServer(isMainServer);
+		List<String> serverList = config.getStringList("serverList");
+		CustomEvents.setServerList(serverList);
 
 		String host = config.getString("mysql.host");
 		String port = config.getString("mysql.port");
@@ -38,6 +47,7 @@ public class MainConfigFile extends SimpleYamlFile {
 
 		String placeholderZeroTime = StringUtils.replaceColors(config.getString("placeholder.zeroTime"));
 		placeholderManager.setZeroTimeString(placeholderZeroTime);
+
 	}
 
 

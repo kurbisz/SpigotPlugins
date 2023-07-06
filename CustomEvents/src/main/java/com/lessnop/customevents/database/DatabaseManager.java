@@ -1,5 +1,6 @@
 package com.lessnop.customevents.database;
 
+import com.lessnop.customevents.CustomEvents;
 import com.lessnop.customevents.event.SingleEventManager;
 import com.lessnop.customevents.event.EventType;
 import com.lessnop.customevents.event.EventTypeEnum;
@@ -55,6 +56,9 @@ public class DatabaseManager {
 		try {
 			sqlQueryManager.createTopPlayersTable(connection);
 			sqlQueryManager.createLocationsTable(connection);
+			for (String serverName : CustomEvents.getServerList()) {
+				sqlQueryManager.createMessagesTables(connection, serverName);
+			}
 			for (EventTypeEnum eventTypeEnum : EventTypeEnum.values()) {
 				sqlQueryManager.createEventsTable(connection, eventTypeEnum);
 
@@ -219,6 +223,38 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 		locations.put(key, locationData);
+	}
+
+	public List<String> getMessages() {
+		try {
+			return sqlQueryManager.getMessages(connection, CustomEvents.getActualServer());
+		} catch (SQLException e) {
+			PrefixUtils.printMessage("Error while getting messages from database!", PrefixUtils.MessageType.ERROR);
+			e.printStackTrace();
+		}
+		return new ArrayList<>();
+	}
+
+	public void clearMessages() {
+		try {
+			sqlQueryManager.clearMessages(connection, CustomEvents.getActualServer());
+		} catch (SQLException e) {
+			PrefixUtils.printMessage("Error while clearing messages from database!", PrefixUtils.MessageType.ERROR);
+			e.printStackTrace();
+		}
+	}
+
+	public void saveMessage(String msg) {
+		String actualServer = CustomEvents.getActualServer();
+		for (String serverName : CustomEvents.getServerList()) {
+			if (serverName.equalsIgnoreCase(actualServer)) continue;
+			try {
+				sqlQueryManager.saveMessage(connection, serverName, msg);
+			} catch (SQLException e) {
+				PrefixUtils.printMessage("Error while saving message to database!", PrefixUtils.MessageType.ERROR);
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

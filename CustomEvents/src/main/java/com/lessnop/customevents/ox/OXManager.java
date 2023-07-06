@@ -69,6 +69,9 @@ public class OXManager {
 		waitingMsg = StringUtils.replaceVars(waitingMsg, "%time%", "" + actStartTime);
 		this.bossBar = Bukkit.createBossBar(waitingMsg, barColor, barStyle);
 		bossBar.setVisible(true);
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			bossBar.addPlayer(player);
+		}
 
 		countDown();
 	}
@@ -100,6 +103,11 @@ public class OXManager {
 
 	private void startEvent() {
 		eventStatus = GameEventStatus.ACTIVE;
+		bossBar.removeAll();
+		for (Player p : players) {
+			bossBar.addPlayer(p);
+		}
+
 		CustomEvents main = CustomEvents.getInstance();
 		MessageManager messageManager = main.getMessageManager();
 		String chatMsg = messageManager.getMsg("ox.started");
@@ -124,7 +132,7 @@ public class OXManager {
 		MessageManager messageManager = CustomEvents.getInstance().getMessageManager();
 		String msg = messageManager.getMsg("ox.question");
 		msg = StringUtils.replaceVars(msg, "%question%", question.getQuestion());
-		for (Player p : Bukkit.getOnlinePlayers()) {
+		for (Player p : players) {
 			p.sendMessage(msg);
 		}
 		String bossBarMsg = messageManager.getMsg("ox.bossBar.question");
@@ -153,7 +161,7 @@ public class OXManager {
 			}
 			players.removeAll(toRemove);
 			String answerMsg = messageManager.getMsg(actQuestion.isAnswer() ? "ox.yesAnswer" : "ox.noAnswer");
-			for (Player p : Bukkit.getOnlinePlayers())
+			for (Player p : players)
 				p.sendMessage(answerMsg);
 
 			actQuestion = null;
@@ -287,5 +295,17 @@ public class OXManager {
 
 	public void setRewardsCommands(List<List<String>> rewardsCommands) {
 		this.rewardsCommands = rewardsCommands;
+	}
+
+	public void addPlayerToBossBar(Player player) {
+		if (bossBar != null) {
+			bossBar.addPlayer(player);
+		}
+	}
+
+	public void removePlayerFromBossBar(Player player) {
+		if (bossBar != null) {
+			bossBar.removePlayer(player);
+		}
 	}
 }

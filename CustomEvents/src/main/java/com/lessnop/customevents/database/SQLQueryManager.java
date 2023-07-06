@@ -3,14 +3,16 @@ package com.lessnop.customevents.database;
 import com.lessnop.customevents.event.EventTypeEnum;
 
 import java.sql.*;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.UUID;
+import java.util.*;
 
 public class SQLQueryManager {
 
 	private final String topPlayersTableName = "topPlayers";
 	private final String locationsTableName = "locations";
+
+	private String getMessagesTableName(String serverName) {
+		return "messages_" + serverName;
+	}
 
 	public void createEventsTable(Connection connection, EventTypeEnum eventTypeEnum) throws SQLException {
 		Statement statement = connection.createStatement();
@@ -27,6 +29,11 @@ public class SQLQueryManager {
 		Statement statement = connection.createStatement();
 		statement.execute("CREATE TABLE IF NOT EXISTS " + locationsTableName + " (name VARCHAR(255) PRIMARY KEY, "
 				+ "world VARCHAR(255), x FLOAT, y FLOAT, z FLOAT, yaw FLOAT, pitch FLOAT);");
+	}
+
+	public void createMessagesTables(Connection connection, String serverName) throws SQLException {
+		Statement statement = connection.createStatement();
+		statement.execute("CREATE TABLE IF NOT EXISTS " + getMessagesTableName(serverName) + " (message VARCHAR(255));");
 	}
 
 	public void createAndUseDatabase(Connection connection, String database) throws SQLException {
@@ -177,5 +184,27 @@ public class SQLQueryManager {
 			statement.setFloat(7, locationData.getPitch());
 			statement.executeUpdate();
 		}
+	}
+
+	public List<String> getMessages(Connection connection, String actualServer) throws SQLException {
+		Statement statement = connection.createStatement();
+		ResultSet resultSet = statement.executeQuery("SELECT message FROM " + getMessagesTableName(actualServer) + ";");
+		List<String> messages = new ArrayList<>();
+		while (resultSet.next()) {
+			String msg = resultSet.getString(1);
+			messages.add(msg);
+		}
+		return messages;
+	}
+
+	public void saveMessage(Connection connection, String serverName, String message) throws SQLException {
+		PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO " + getMessagesTableName(serverName) + " VALUES (?);");
+		preparedStatement.setString(1, message);
+		preparedStatement.executeUpdate();
+	}
+
+	public void clearMessages(Connection connection, String actualServer) throws SQLException {
+		Statement statement = connection.createStatement();
+		statement.executeUpdate("DELETE FROM " + getMessagesTableName(actualServer) + ";");
 	}
 }

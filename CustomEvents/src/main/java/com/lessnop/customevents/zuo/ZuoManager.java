@@ -61,6 +61,9 @@ public class ZuoManager {
 		waitingMsg = StringUtils.replaceVars(waitingMsg, "%time%", "" + actStartTime);
 		this.bossBar = Bukkit.createBossBar(waitingMsg, actZuoEvent.getBarColor(), actZuoEvent.getBarStyle());
 		bossBar.setVisible(true);
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			bossBar.addPlayer(player);
+		}
 
 		countDown();
 	}
@@ -92,6 +95,10 @@ public class ZuoManager {
 
 	private void startEvent() {
 		eventStatus = GameEventStatus.ACTIVE;
+		bossBar.removeAll();
+		for (Player p : players) {
+			bossBar.addPlayer(p);
+		}
 		CustomEvents main = CustomEvents.getInstance();
 		MessageManager messageManager = main.getMessageManager();
 		String chatMsg = messageManager.getMsg("zuo.started");
@@ -255,5 +262,17 @@ public class ZuoManager {
 
 	public void setZuoEvents(HashMap<String, SingleZuoEvent> zuoEvents) {
 		this.zuoEvents = zuoEvents;
+	}
+
+	public void addPlayerToBossBar(Player player) {
+		if (bossBar != null) {
+			bossBar.addPlayer(player);
+		}
+	}
+
+	public void removePlayerFromBossBar(Player player) {
+		if (bossBar != null) {
+			bossBar.removePlayer(player);
+		}
 	}
 }

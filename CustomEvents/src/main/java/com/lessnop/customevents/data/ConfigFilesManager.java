@@ -13,6 +13,7 @@ public class ConfigFilesManager {
 	private OXConfigFile oxConfigFile;
 	private ZUOConfigFile zuoConfigFile;
 	private InventoryConfigFile inventoryConfigFile;
+	private SchedulersConfigFile schedulersConfigFile;
 
 	public ConfigFilesManager() {
 		CustomEvents main = CustomEvents.getInstance();
@@ -42,6 +43,9 @@ public class ConfigFilesManager {
 
 		inventoryConfigFile = new InventoryConfigFile("inventory.yml");
 		inventoryConfigFile.load();
+
+		schedulersConfigFile = new SchedulersConfigFile("schedulers.yml");
+		schedulersConfigFile.load();
 	}
 
 

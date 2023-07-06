@@ -7,6 +7,7 @@ import com.lessnop.customevents.event.EventType;
 import com.lessnop.customevents.event.EventTypeEnum;
 import com.lessnop.customevents.event.items.ItemsEventType;
 import com.lessnop.customevents.event.mobs.MobsEventType;
+import com.lessnop.customevents.ox.OXManager;
 import com.lessnop.customevents.utils.GameEventStatus;
 import com.lessnop.customevents.utils.StringUtils;
 import com.lessnop.customevents.zuo.ZuoManager;
@@ -19,6 +20,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +37,22 @@ public class ZuoListener implements Listener {
 		ZuoManager zuoManager = CustomEvents.getInstance().getZuoManager();
 		if (zuoManager.getEventStatus().equals(GameEventStatus.ACTIVE)) {
 			zuoManager.removeMob(e.getMob());
+		}
+	}
+
+	@EventHandler
+	public void onJoin(PlayerJoinEvent e) {
+		ZuoManager zuoManager = CustomEvents.getInstance().getZuoManager();
+		if (zuoManager != null && zuoManager.getEventStatus().equals(GameEventStatus.WAITING_FOR_PLAYERS)) {
+			zuoManager.addPlayerToBossBar(e.getPlayer());
+		}
+	}
+
+	@EventHandler
+	public void onLeave(PlayerQuitEvent e) {
+		ZuoManager zuoManager = CustomEvents.getInstance().getZuoManager();
+		if (zuoManager != null) {
+			zuoManager.removePlayerFromBossBar(e.getPlayer());
 		}
 	}
 

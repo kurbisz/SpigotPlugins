@@ -10,3 +10,10 @@ placeholder:
   defaultGeneral: 'Brak eventu'
   time: '%h%h %m%min'
   zeroTime: '&cOFF'
+mainServer: true
+actualServer: server1
+serverList:
+  - server1
+  - server2
+  - server3
+  - server4

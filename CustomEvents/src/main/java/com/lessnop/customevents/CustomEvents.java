@@ -12,10 +12,16 @@ import com.lessnop.customevents.scheduler.SchedulerManager;
 import com.lessnop.customevents.zuo.ZuoManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
+
 public final class CustomEvents extends JavaPlugin {
 
 	private static CustomEvents inst;
 	private static boolean debugMode;
+
+	private static String actualServer;
+	private static List<String> serverList;
+	private static boolean isMainServer;
 
 	private MessageManager messageManager;
 	private DatabaseManager databaseManager;
@@ -39,6 +45,30 @@ public final class CustomEvents extends JavaPlugin {
 
 	public static void setDebugMode(boolean debugMode) {
 		CustomEvents.debugMode = debugMode;
+	}
+
+	public static String getActualServer() {
+		return actualServer;
+	}
+
+	public static void setActualServer(String actualServer) {
+		CustomEvents.actualServer = actualServer;
+	}
+
+	public static List<String> getServerList() {
+		return serverList;
+	}
+
+	public static void setServerList(List<String> serverList) {
+		CustomEvents.serverList = serverList;
+	}
+
+	public static boolean isIsMainServer() {
+		return isMainServer;
+	}
+
+	public static void setIsMainServer(boolean isMainServer) {
+		CustomEvents.isMainServer = isMainServer;
 	}
 
 	@Override
@@ -98,6 +128,10 @@ public final class CustomEvents extends JavaPlugin {
 
 	public PlaceholderManager getPlaceholderManager() {
 		return placeholderManager;
+	}
+
+	public SchedulerManager getSchedulerManager() {
+		return schedulerManager;
 	}
 
 	public OXManager getOxManager() {
